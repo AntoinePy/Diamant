@@ -118,21 +118,44 @@ void delete_tree(Tree *t)
 
 int compute_blue_victories(Tree *t, Node *n)
 {
-	int nb = 0;
-	/* A COMPLETER */
-	return nb;
+    int nb = 0;
+    if(n.result == Node.BLUE_WINS && n.nbChildren == 0) nb++;
+    if(n.children !=null) {
+        for (int i = 0; i < n.children.length; i++) {
+            if (n.children[i] != null) {
+                nb += computeBlueVictories(n.children[i]);
+            }
+        }
+    }
+    return nb;
+}
 }
 
 int compute_red_victories(Tree *t, Node *n)
 {
 	int nb = 0;
-	/* A COMPLETER */
-	return nb;
+    if(n.result == Node.RED_WINS&& n.nbChildren == 0) nb++;
+    if(n.children != null) {
+        for (int i = 0; i < n.children.length; i++) {
+            if (n.children[i] != null) {
+                nb += computeRedVictories(n.children[i]);
+            }
+        }
+    }
+    return nb;
 }
 
 int compute_draws(Tree *t, Node *n)
 {
-	int nb = 0;
-	/* A COMPLETER */
-	return nb;
+    int nb = 0;
+    if(n.result == Node.DRAW_PARTY && n.nbChildren == 0) nb++;
+    if(n.children != null) {
+        for (int i = 0; i < n.children.length; i++) {
+            if (n.children[i] != null) {
+                nb += computeDraws(n.children[i]);
+            }
+        }
+    }
+    return nb;
+}
 }
